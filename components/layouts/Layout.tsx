@@ -1,4 +1,4 @@
-import { VFC, memo, ReactNode } from "react";
+import {VFC, memo, ReactNode, useState} from "react";
 import Link from "next/link";
 import styles from "./Layout.module.scss";
 
@@ -37,28 +37,31 @@ export const Layout: VFC<Props> = memo((props) => {
 
   const { children } = props;
 
+  const [ menuClose, setMenuClose ] = useState(false);
+
   return (
     <div className={styles.root}>
 
       <aside className={styles.sidebar}>
-        <h1 className={styles.logo}>ロゴが入ります</h1>
+        <div className={styles.hamburger} role="button" onClick={() => setMenuClose(!menuClose)}>
+          <span className={styles.border}></span>
+          <span className={styles.border}></span>
+          <span className={styles.border}></span>
+        </div>
         {navigations.map((navigation) => (
           <Link href={navigation.path} key={navigation.path}>
-            <a>
-              <p className={styles.pageName}>{ navigation.pageName }</p>
+            <a className={styles.flexContainer}>
+              <div className={styles.icon}>○</div>
+              <p
+                className={styles.pageName}
+                style={{display: menuClose ? "none" : "block"}}
+              >{ navigation.pageName }</p>
             </a>
           </Link>
         ))}
       </aside>
 
       <main className={styles.mainContent}>
-        <div className={styles.header}>
-          <div className={styles.hamburger} role="button">
-            <span className={styles.border}></span>
-            <span className={styles.border}></span>
-            <span className={styles.border}></span>
-          </div>
-        </div>
         {children}
       </main>
     </div>
