@@ -2,6 +2,7 @@ import { VFC, memo, ReactNode, useState } from "react";
 import Link from "next/link";
 import styles from "./Layout.module.scss";
 import { HomeIcon } from "../../styles/Home";
+import { useRouter } from "next/router";
 
 
 type Props = {
@@ -45,6 +46,13 @@ export const Layout: VFC<Props> = memo((props) => {
 
   const [ menuOpen, setMenuOpen ] = useState(true);
 
+  const router = useRouter();
+
+  const isPageActive = (pagePath: string): boolean => {
+    return pagePath === String(router.route)
+  }
+
+
   return (
     <div className={styles.root}>
 
@@ -56,7 +64,9 @@ export const Layout: VFC<Props> = memo((props) => {
         </div>
         {navigations.map((navigation) => (
           <Link href={navigation.path} key={navigation.pageName}>
-            <a className={styles.flexContainer}>
+            <a
+              className={styles.flexContainer}
+              style={{ background: isPageActive(navigation.path) ? "#1B555A" : "none" }}>
               { navigation.icon }
               { menuOpen && <p className={styles.pageName}>{ navigation.pageName }</p> }
             </a>

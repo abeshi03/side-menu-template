@@ -117,17 +117,16 @@
     column-gap: 10px;
 
     margin-top: 10px;
-    margin-left: 3px;
 
+    margin-right: -$paddings;
+    margin-left: -$paddings;
+
+    padding-right: $paddings;
+    padding-left: $paddings;
 
     &:hover {
 
       background-color: #1B555A;
-      margin-right: -$paddings;
-      margin-left: -$paddings;
-
-      padding-right: $paddings;
-      padding-left: $paddings;
     }
   }
 
