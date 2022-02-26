@@ -1,6 +1,23 @@
 .root {
 
   $paddings: 15px;
+  @mixin borderStyle() {
+
+    display: block;
+
+    height: 1px;
+    width: 30px;
+    background: white;
+
+    margin-bottom: 10px;
+
+
+    &:last-child {
+
+      margin-bottom: 0;
+    }
+  }
+
 
   display: flex;
   width: 100%;
@@ -26,25 +43,12 @@
     margin-top: 15px;
 
 
-    .border {
-
-      display: block;
-
-      height: 1px;
-      width: 30px;
-      background: white;
-
-      margin-bottom: 10px;
-
-
-      &:last-child {
-
-        margin-bottom: 0px;
-      }
+    .menuCloseArrow {
+      @include borderStyle
     }
 
 
-    &:hover > .border {
+    &:hover > .menuCloseArrow {
 
       transition: 0.2s;
 
@@ -69,14 +73,39 @@
         margin-bottom: -3px; /* アニメーションの際の調整 */
       }
     }
+
+
+    .menuOpenArrow {
+      @include borderStyle
+    }
+
+
+    &:hover > .menuOpenArrow {
+
+      transition: 0.2s;
+
+      &:nth-child(1) {
+
+        width: 15px;
+        height: 2px;
+        transform: translateY(7px) translateX(16px) rotate(-140deg);
+      }
+
+
+      &:nth-child(2) {
+
+        height: 2px;
+      }
+
+      &:nth-child(3) {
+        width: 15px;
+        height: 2px;
+        transform: translateY(-7px) translateX(16px) rotate(140deg);
+
+        margin-bottom: -3px; /* アニメーションの際の調整 */
+      }
+    }
   }
-
-
-  //.navigation {
-  //
-  //  position: sticky;
-  //  top: 0;
-  //}
 
 
   .flexContainer {
@@ -84,6 +113,7 @@
     display: flex;
     align-items: center;
     column-gap: 10px;
+
     margin-top: 10px;
     margin-left: 3px;
 

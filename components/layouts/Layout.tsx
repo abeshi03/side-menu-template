@@ -42,46 +42,26 @@ export const Layout: VFC<Props> = memo((props) => {
 
   const { children } = props;
 
-  const [ menuOpen, setMenuOpen ] = useState(false);
+  const [ menuOpen, setMenuOpen ] = useState(true);
 
   return (
     <div className={styles.root}>
 
-      { menuOpen ? (
-        <aside className={styles.sidebar} style={{ width: "200px" }}>
-          <div className={styles.hamburger} role="button" onClick={() => setMenuOpen(!menuOpen)}>
-            <span className={styles.border}></span>
-            <span className={styles.border}></span>
-            <span className={styles.border}></span>
-          </div>
-          {navigations.map((navigation) => (
-            <Link href={navigation.path} key={navigation.path}>
-              <a className={styles.flexContainer}>
-                {navigation.icon}
-                <p
-                  className={styles.pageName}
-                >ほげ</p>
-              </a>
-            </Link>
+      <aside className={styles.sidebar} style={{ width: menuOpen ? "200px" : "60px" }}>
+        <div className={styles.hamburger} role="button" onClick={() => setMenuOpen(!menuOpen)}>
+          {[...Array(3)].map((_, index: number) => (
+            <span className={menuOpen ? styles.menuCloseArrow : styles.menuOpenArrow} key={index}></span>
           ))}
-        </aside>
-      ) : (
-        <aside className={styles.sidebar} style={{ width: "60px" }}>
-          <div className={styles.hamburger} role="button" onClick={() => setMenuOpen(!menuOpen)}>
-            <span className={styles.border}></span>
-            <span className={styles.border}></span>
-            <span className={styles.border}></span>
-          </div>
-          {navigations.map((navigation) => (
-            <Link href={navigation.path} key={navigation.path}>
-              <a className={styles.flexContainer}>
-                {navigation.icon}
-              </a>
-            </Link>
-          ))}
-        </aside>
-      )}
-
+        </div>
+        {navigations.map((navigation) => (
+          <Link href={navigation.path} key={navigation.pageName}>
+            <a className={styles.flexContainer}>
+              { navigation.icon }
+              { menuOpen && <p className={styles.pageName}>{ navigation.pageName }</p> }
+            </a>
+          </Link>
+        ))}
+      </aside>
 
       <main className={styles.mainContent}>
         {children}
