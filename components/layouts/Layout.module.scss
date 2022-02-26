@@ -24,7 +24,7 @@
 
   .sidebar {
 
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky; /* Safari対応 */
     position: sticky;
     top: 0;
     height: 100vh;
@@ -43,6 +43,7 @@
     margin-top: 15px;
 
 
+    /* メニューを閉じるアニメーション ==================================================================================== */
     .menuCloseArrow {
       @include borderStyle
     }
@@ -75,6 +76,7 @@
     }
 
 
+    /* メニューを開くアニメーション ====================================================================================== */
     .menuOpenArrow {
       @include borderStyle
     }
@@ -137,8 +139,8 @@
     fill: white;
     width: 25px;
 
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 12px; // 微調整
+    margin-bottom: 12px; // 微調整
   }
 
 
