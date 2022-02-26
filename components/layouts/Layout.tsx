@@ -1,4 +1,4 @@
-import {VFC, memo, ReactNode, useState} from "react";
+import { VFC, memo, ReactNode, useState } from "react";
 import Link from "next/link";
 import styles from "./Layout.module.scss";
 import { HomeIcon } from "../../styles/Home";
@@ -9,9 +9,9 @@ type Props = {
 }
 
 type Navigation = {
-  icon?: JSX.Element;
   pageName: string;
   path: string;
+  icon: JSX.Element;
 }
 
 const navigations: Navigation[] = [
@@ -22,17 +22,17 @@ const navigations: Navigation[] = [
   },
   {
     pageName: "ページ2",
-    path: "#",
+    path: "/page2",
     icon: <HomeIcon className={styles.icon}/>
   },
   {
     pageName: "ページ3",
-    path: "#",
+    path: "/page3",
     icon: <HomeIcon className={styles.icon}/>
   },
   {
     pageName: "ページ4",
-    path: "#",
+    path: "/page4",
     icon: <HomeIcon className={styles.icon}/>
   },
 
