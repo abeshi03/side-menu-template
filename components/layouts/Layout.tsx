@@ -38,6 +38,7 @@ const navigations: Navigation[] = [
 
 ]
 
+/* eslint-disable-next-line react/display-name */
 export const Layout: VFC<Props> = memo((props) => {
 
   const { children } = props;
