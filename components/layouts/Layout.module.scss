@@ -10,7 +10,6 @@
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
-    width: 200px;
     height: 100vh;
     background-color: #40B87C;
 
@@ -73,38 +72,20 @@
   }
 
 
-  .navigation {
-
-    position: sticky;
-    top: 0;
-  }
+  //.navigation {
+  //
+  //  position: sticky;
+  //  top: 0;
+  //}
 
 
   .flexContainer {
 
-    display: grid;
-    grid-template-columns: 30px minmax(0, 1fr);
+    display: flex;
     align-items: center;
-    justify-content: center;
-
-  }
-
-
-  .icon {
-
-    display: block;
-    flex-shrink: 0;
-    color: white;
-    width: 30px;
-  }
-
-
-  .pageName {
-    font-size: 14px;
-    color: white;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
+    column-gap: 10px;
+    margin-top: 10px;
+    margin-left: 3px;
 
 
     &:hover {
@@ -116,6 +97,24 @@
       padding-right: $paddings;
       padding-left: $paddings;
     }
+  }
+
+
+  .icon {
+
+    display: block;
+    flex-shrink: 0;
+    fill: white;
+    width: 25px;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+
+  .pageName {
+    font-size: 14px;
+    color: white;
   }
 
 
